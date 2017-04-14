@@ -14,13 +14,7 @@ namespace Trivia
         public Game(Players players)
         {
             _players = players;
-            for (var i = 0; i < 50; i++)
-            {
-                _questions._popQuestions.AddLast("Pop Question " + i);
-                _questions._scienceQuestions.AddLast(("Science Question " + i));
-                _questions._sportsQuestions.AddLast(("Sports Question " + i));
-                _questions._rockQuestions.AddLast(CreateRockQuestion(i));
-            }
+            
         }
 
         public void Roll(int roll)
@@ -40,7 +34,7 @@ namespace Trivia
                     Console.WriteLine(_players.Current.Name
                                       + "'s new location is "
                                       + _players.Current.Place);
-                    Console.WriteLine("The category is " + _questions.CurrentCategory(_players.Current.Place));
+                    
                     _questions.AskQuestion(_players.Current.Place);
                 }
                 else
@@ -57,7 +51,6 @@ namespace Trivia
                 Console.WriteLine(_players.Current.Name
                                   + "'s new location is "
                                   + _players.Current.Place);
-                Console.WriteLine("The category is " + _questions.CurrentCategory(_players.Current.Place));
                 _questions.AskQuestion(_players.Current.Place);
             }
 
