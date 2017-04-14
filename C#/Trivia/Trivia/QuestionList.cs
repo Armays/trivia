@@ -5,33 +5,33 @@ namespace Trivia
 {
     internal class QuestionList
     {
-        public string category { get; private set; }
-        private LinkedList<string> liste;
+        public string Category { get; private set; }
+        private readonly LinkedList<string> _liste;
 
         public QuestionList(string category)
         {
-            this.category = category;
-            this.liste = new LinkedList<string>();
-            addQuestion();
+            this.Category = category;
+            this._liste = new LinkedList<string>();
+            AddQuestion();
         }
 
-        private void addQuestion()
+        private void AddQuestion()
         {
             for (var i = 0; i < 50; i++)
             {
                 
-                liste.AddLast(category + " Question " + i);
+                _liste.AddLast(Category + " Question " + i);
             }
         }
 
-        public void removeQuestion()
+        public void RemoveQuestion()
         {
-            liste.RemoveFirst();
+            _liste.RemoveFirst();
         }
 
-        public string getQuestion()
+        public string GetQuestion()
         {
-            string question = liste.First();
+            var question = _liste.First();
             return question;
         }
     }

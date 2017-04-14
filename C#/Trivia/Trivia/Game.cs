@@ -9,7 +9,7 @@ namespace Trivia
         private readonly Questions _questions = new Questions();
 
         private readonly Players _players;
-        bool isGettingOutOfPenaltyBox;
+        bool _isGettingOutOfPenaltyBox;
 
         public Game(Players players)
         {
@@ -26,7 +26,7 @@ namespace Trivia
             {
                 if (roll % 2 != 0)
                 {
-                    isGettingOutOfPenaltyBox = true;
+                    _isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(_players.Current.Name + " is getting out of the penalty box");
                     _players.Current.Move(roll);
@@ -40,7 +40,7 @@ namespace Trivia
                 else
                 {
                     Console.WriteLine(_players.Current.Name + " is not getting out of the penalty box");
-                    isGettingOutOfPenaltyBox = false;
+                    _isGettingOutOfPenaltyBox = false;
                 }
 
             }
@@ -68,7 +68,7 @@ namespace Trivia
             bool winner;
             if (_players.Current.InPenaltyBox)
             {
-                if (isGettingOutOfPenaltyBox)
+                if (_isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
                     _players.Current.WinAGoldCoin();

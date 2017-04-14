@@ -6,7 +6,7 @@ namespace Trivia
 {
     internal class Questions
     {
-        private List <QuestionList> _questionStack = new List<QuestionList>();
+        private readonly List <QuestionList> _questionStack = new List<QuestionList>();
 
         private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() { { 0, "Pop" }, { 1, "Science" }, { 2, "Sports" }, { 3, "Rock" } };
 
@@ -20,9 +20,9 @@ namespace Trivia
         public string AskQuestion(int currentPlace)
         {
             QuestionList questionList = CurrentCategory(currentPlace);
-            Console.WriteLine("The category is " + questionList.category);
-            string question = questionList.getQuestion();
-            questionList.removeQuestion();
+            Console.WriteLine("The category is " + questionList.Category);
+            string question = questionList.GetQuestion();
+            questionList.RemoveQuestion();
             Console.WriteLine(question);
             return question;
         }
