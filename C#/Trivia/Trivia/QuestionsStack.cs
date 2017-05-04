@@ -7,11 +7,13 @@ namespace Trivia
     public class QuestionsStack
     {
         private readonly string _category;
-        private readonly LinkedList<string> questions = new LinkedList<string>();
+        private readonly LinkedList<string> questions;
 
-        public QuestionsStack(string category)
+        public QuestionsStack(string category, IQuestionsRepository source)
         {
             _category = category;
+            questions = source.GetQuestions(category);
+
         }
 
         public void AskQuestionAndDiscardIt()
@@ -21,9 +23,6 @@ namespace Trivia
             questions.RemoveFirst();
         }
 
-        public void Generate(int index)
-        {
-            questions.AddLast(_category + " Question " + index);
-        }
+     
     }
 }
